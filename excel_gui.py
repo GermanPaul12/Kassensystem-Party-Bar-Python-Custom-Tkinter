@@ -94,7 +94,7 @@ shortcut_kosten_entry = customtkinter.CTkEntry(root, width=140,
                                corner_radius=10,
                               fg_color='#e76f51',
                               fg='white',
-                              text_font=('Times New Roman', 20),
+                              text_font=('Times New Roman', 24),
                               justify=CENTER,
                               bg_color='black',
                               border_width=2, border_color="white",
@@ -355,7 +355,7 @@ getraenke_label.grid(row=1, column=0, columnspan=2, rowspan=1, sticky='ew', padx
 menge_label.grid(row=1, column=2, columnspan=2, rowspan=1, sticky='ew', padx=10)
 kassenbestand_label.grid(row=1, column=4, columnspan=2, rowspan=1, sticky='ew', padx=10)
 
-img_label.grid(row=2, column=4, columnspan=2, rowspan=3, padx=10, pady=10)
+img_label.grid(row=2, column=4, columnspan=2, rowspan=3, padx=10, pady=10, sticky='nsew')
 
 
 shots_label.grid(row=2, column=0, columnspan=2, rowspan=1, sticky='ew', padx=10)
