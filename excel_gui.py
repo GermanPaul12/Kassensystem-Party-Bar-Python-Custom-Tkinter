@@ -27,12 +27,23 @@ def kosten_anzeigen():
    return kosten
    
 def shortcut_kosten():
-   pass   
-      
+   if shortcut_kosten_entry.get() == 'Leave this entry':
+      messagebox.showwarning("Warning", "Don't press this button!")
+   else:
+      try:
+         kasse.kassenstand += int(shortcut_kosten_entry.get())   
+         kassenbestand_label.configure(text=f'Cash Balance: {kasse.kassenstand}')
+         with open('C:/Users/paulg/Documents/Coding/GUI/Zeiterfassung/kassenstand.txt', 'w+') as f:
+            f.write(str(kasse.kassenstand))
+         shortcut_kosten_entry.delete(0, 'end')
+         shortcut_kosten_entry.insert(0, 'Leave this entry')   
+      except:
+         messagebox.showerror('Fatal Error', 'Something went wrong!')
+         shortcut_kosten_entry.delete(0, 'end')
+         shortcut_kosten_entry.insert(0, 'Leave this entry')
       
       
 def finish_order():
-   # TODO
    kosten = kosten_anzeigen()
    if kosten != 0 and erloes_entry.get() != '':
       erloes = int(erloes_entry.get())
@@ -47,7 +58,7 @@ def finish_order():
       with open('C:/Users/paulg/Documents/Coding/GUI/Zeiterfassung/kassenlog.csv', 'a+') as f:
          f.write(f'{erloes},{kosten},{erloes-kosten},{kasse.kassenstand},{int(shots_combobox.get())},{int(bier_combobox.get())},{int(longdrink_combobox.get())},{check_happy_hour()}\n')
       with open('C:/Users/paulg/Documents/Coding/GUI/Zeiterfassung/kassenstand.txt', 'w+') as f:
-         f.write(kasse.kassenstand)
+         f.write(str(kasse.kassenstand))
             
       shots_combobox.set('0')
       bier_combobox.set('0')
